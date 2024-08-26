@@ -1,0 +1,61 @@
+Arithmetic coding is a form of entropy encoding used in lossless data compression. Normally, a string of characters such as the words "hello there" is represented using a fixed number of bits per character, as in the ASCII code. When a string is converted to arithmetic encoding, frequently used characters will be stored with fewer bits and not-so-frequently occurring characters will be stored with more bits, resulting in fewer bits used in total. Arithmetic coding differs from other forms of entropy encoding, such as Huffman coding, in that rather than separating the input into component symbols and replacing each with a code, arithmetic coding encodes the entire message into a single number, an arbitrary-precision fraction q where 0.0 ≤ q < 1.0. It represents the current information as a range, defined by two numbers. Recent family of entropy coders called asymmetric numeral systems allows for faster implementations thanks to directly operating on a single natural number representing the current information.
+
+
+An arithmetic coding example assuming a fixed probability distribution of three symbols "A", "B", and "C". Probability of "A" is 50%, probability of "B" is 33% and probability of "C" is 17%. Furthermore, we assume that the recursion depth is known in each step. In step one we code "B" which is inside the interval [0.5, 0.83): The binary number "0.10x" is the shortest code that represents an Interval that is entirely inside [0.5, 0.83). "x" means an arbitrary bit sequence. There are two extreme cases: the smallest x stands for zero which represents the left side of the represented interval. Then the left side of the interval is dec(0.10) = 0.5. At the other extreme, x stands for a finite sequence of ones which has the upper limit dec(0.11) = 0.75. Therefore, "0.10x" represents the interval [0.5, 0.75) which is inside [0.5, 0.83) Now we can leave out the "0." part since all intervals begin with "0." and we can ignore the "x" part because no matter what bit-sequence it represents, we will stay inside [0.5, 0.75).
+
+ [1] What is JPEG? comp.compression Frequently Asked Questions (part 1/3)
+ "Recommendation T.81 (1992) Corrigendum 1 (01/04)". Recommendation T.81 (1992). International Telecommunication Union. 9 November 2004. Retrieved 3 February 2011.
+ JPEG Still Image Data Compression Standard, W. B. Pennebaker and J. L. Mitchell, Kluwer Academic Press, 1992. ISBN 0-442-01272-1
+ "T.81 – DIGITAL COMPRESSION AND CODING OF CONTINUOUS-TONE STILL IMAGES – REQUIREMENTS AND GUIDELINES" (PDF). CCITT. September 1992. Retrieved 12 July 2019.
+ [2] comp.compression Frequently Asked Questions (part 1/3)
+ [3] Dirac video codec 1.0 released
+ For instance, Howard & Vitter (1994) discuss versions of arithmetic coding based on real-number ranges, integer approximations to those ranges, and an even more restricted type of approximation that they call binary quasi-arithmetic coding. They state that the difference between real and integer versions is negligible, prove that the compression loss for their quasi-arithmetic method can be made arbitrarily small, and bound the compression loss incurred by one of their approximations as less than 0.06%. See: Howard, Paul G.; Vitter, Jeffrey S. (1994), "Arithmetic coding for data compression" (PDF), Proceedings of the IEEE, 82 (6): 857–865, doi:10.1109/5.286189, hdl:1808/7229, archived from the original (PDF) on 18 October 2013, retrieved 17 October 2013.
+References
+MacKay, David J.C. (September 2003). "Chapter 6: Stream Codes". Information Theory, Inference, and Learning Algorithms. Cambridge University Press. ISBN 0-521-64298-1. Archived from the original (PDF/PostScript/DjVu/LaTeX) on 22 December 2007. Retrieved 30 December 2007.
+Press, WH; Teukolsky, SA; Vetterling, WT; Flannery, BP (2007). "Section 22.6. Arithmetic Coding". Numerical Recipes: The Art of Scientific Computing (3rd ed.). New York: Cambridge University Press. ISBN 978-0-521-88068-8.
+Rissanen, Jorma (May 1976). "Generalized Kraft Inequality and Arithmetic Coding". IBM Journal of Research and Development. 20 (3): 198–203. doi:10.1147/rd.203.0198. Retrieved 21 September 2007.
+Rissanen, J.J.; Langdon G.G., Jr (March 1979). "Arithmetic coding" (PDF). IBM Journal of Research and Development. 23 (2): 149–162. doi:10.1147/rd.232.0149. Archived from the original (PDF) on 28 September 2007. Retrieved 22 September 2007.
+Witten, Ian H.; Neal, Radford M.; Cleary, John G. (June 1987). "Arithmetic Coding for Data Compression" (PDF). Communications of the ACM. 30 (6): 520–540. doi:10.1145/214762.214771. Archived (PDF) from the original on 28 September 2007. Retrieved 21 September 2007.
+Rodionov Anatoly, Volkov Sergey (2010) "p-adic arithmetic coding" Contemporary Mathematics Volume 508, 2010 Contemporary Mathematics
+Rodionov Anatoly, Volkov Sergey (2007) ” p-adic arithmetic coding", https://arxiv.org/abs//0704.0834v1
+External links
+ This article incorporates public domain material from the NIST document: Black, Paul E. "arithmetic coding". Dictionary of Algorithms and Data Structures.
+Newsgroup posting with a short worked example of arithmetic encoding (integer-only).
+PlanetMath article on arithmetic coding
+Anatomy of Range Encoder The article explains both range and arithmetic coding. It has also code samples for 3 different arithmetic encoders along with performance comparison.
+Introduction to Arithmetic Coding. 60 pages.
+Eric Bodden, Malte Clasen and Joachim Kneis: Arithmetic Coding revealed. Technical Report 2007-5, Sable Research Group, McGill University.
+Arithmetic Coding + Statistical Modeling = Data Compression by Mark Nelson.
+Data Compression With Arithmetic Coding by Mark Nelson (2014)
+Fast implementation of range coding and rANS by James K. Bonfield
+vte
+Data compression methods
+Lossless	
+Entropy type	
+ArithmeticAsymmetric numeral systemsGolombHuffman AdaptiveCanonicalModifiedRangeShannonShannon–FanoShannon–Fano–EliasTunstallUnaryUniversal Exp-GolombFibonacciGammaLevenshtein
+Dictionary type	
+Byte pair encodingLempel–Ziv BrotliDEFLATELZ4LZFSELZJBLZMALZOLZRWLZSLZSSLZWLZWLLZXSnappyZstandard
+Other types	
+BWTCTWDeltaDMCDPCMLDCTMTFPAQPPMRLE
+Lossy	
+Transform type	
+Discrete cosine transform DCTMDCTDSTFFTWavelet DaubechiesDWTSPIHT
+Predictive type	
+DPCM ADPCMLPC ACELPCELPLARLSPWLPCMotion CompensationEstimationVectorPsychoacoustic
+Audio	
+Concepts	
+Bit rate ABRCBRVBRCompandingConvolutionDynamic rangeLatencyNyquist–Shannon theoremSamplingSound qualitySpeech codingSub-band coding
+Codec parts	
+A-lawμ-lawDPCM ADPCMFT FFTLPC ACELPCELPLARLSPWLPCMDCTPsychoacoustic model
+Image	
+Concepts	
+Chroma subsamplingCoding tree unitColor spaceCompression artifactImage resolutionMacroblockPixelPSNRQuantizationStandard test image
+Methods	
+Chain codeDCTDEFLATEFractalKLTLPRLEWavelet DaubechiesDWTEZWSPIHT
+Video	
+Concepts	
+Bit rate ABRCBRVBRDisplay resolutionFrameFrame rateFrame typesInterlaceVideo characteristicsVideo quality
+Codec parts	
+DCTDPCMDeblocking filterLapped transformMotion CompensationEstimationVectorWavelet DaubechiesDWT
+Theory	
+EntropyInformation theory TimelineKolmogorov complexityQuantizationRate–distortionRedundancy
